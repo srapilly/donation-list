@@ -30,6 +30,7 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
+      - run: npm run build
       - name: Run Playwright tests
         run: |
           export DISPLAY=:99
