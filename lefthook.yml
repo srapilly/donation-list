@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: npm run lint
+    format:
+      glob: "*"
+      stage_fixed: true
+      run: npm run format
