@@ -15,6 +15,8 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:3000",
     trace: "on-first-retry",
+    locale: "en-GB",
+    timezoneId: "Europe/Paris",
   },
 
   projects: [
