@@ -34,7 +34,7 @@ export function Donation() {
                 <td>
                   {donation.firstName} {donation.lastName}
                 </td>
-                <td>{donation.amount}</td>
+                <td>${donation.amount / 100}</td>
               </tr>
             );
           })}
