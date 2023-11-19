@@ -1,6 +1,17 @@
 import { usePage } from "../hooks/usePage";
 import donations from "../assets/donations.json";
 
+function timestampToFormattedDate(timestamp: number) {
+  const date = new Date(timestamp);
+
+  return new Intl.DateTimeFormat(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+    month: "short",
+    day: "2-digit",
+  }).format(date);
+}
+
 export function Donation() {
   usePage("Donation");
 
@@ -19,7 +30,7 @@ export function Donation() {
           {donations.map(({ id, donation }) => {
             return (
               <tr key={id}>
-                <td>{donation.createdAtUtc}</td>
+                <td>{timestampToFormattedDate(donation.createdAtUtc)}</td>
                 <td>
                   {donation.firstName} {donation.lastName}
                 </td>

@@ -13,6 +13,8 @@ test("has donations", async ({ page }) => {
 
   await expect(page.getByRole("row")).toHaveCount(101);
   await expect(
-    page.getByRole("row").filter({ hasText: "1684766860371" + "G F" + "3000" }),
+    page
+      .getByRole("row")
+      .filter({ hasText: "May 22, 10:47 AM" + "G F" + "3000" }),
   ).toBeVisible();
 });
