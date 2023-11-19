@@ -6,15 +6,14 @@ test("has title", async ({ page }) => {
   await expect(page).toHaveTitle(/Donation - Zeffy/);
 });
 
-test("has donations", async ({ page }) => {
+// TODO check with different locale and timezone
+test("has donations FR", async ({ page }) => {
   await page.goto("/donation");
 
   await expect(page.getByRole("heading", { name: "Donations" })).toBeVisible();
 
   await expect(page.getByRole("row")).toHaveCount(101);
   await expect(
-    page
-      .getByRole("row")
-      .filter({ hasText: "May 22, 10:47 AM" + "G F" + "3000" }),
+    page.getByRole("row").filter({ hasText: "22 May, 16:47" + "G F" + "3000" }),
   ).toBeVisible();
 });
