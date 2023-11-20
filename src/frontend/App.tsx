@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { useState } from "react";
 import { trpc } from "./utils/trpc";
+import { DonationInfinite } from "./routes/DonationInfinite";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/donation",
         element: <Donation />,
+      },
+      {
+        path: "/donation-infinite",
+        element: <DonationInfinite />,
       },
     ],
   },

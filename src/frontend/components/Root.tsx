@@ -13,6 +13,9 @@ export function Root() {
               <li>
                 <NavLink to="donation">Donation</NavLink>
               </li>
+              <li>
+                <NavLink to="donation-infinite">Donation Infinite</NavLink>
+              </li>
             </ul>
           </nav>
         </header>

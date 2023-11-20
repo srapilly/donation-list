@@ -7,6 +7,23 @@
       "id": "33753852-2e03-498a-bafd-256c8d410400",
       "firstName": "G",
       "lastName": "F",
+      "createdAtUtc": 1684763497926,
+      "amount": 3000,
+      "thankYouComment": null,
+      "isAnonymous": true,
+      "companyName": null,
+      "__typename": "DonationObject"
+    },
+    "__typename": "TransactionWithDonationObject"
+  },
+  {
+    "id": "d00e6c3a-404c-4dde-a546-a53520f1dddb",
+    "type": "Charge",
+    "refundedAmount": 0,
+    "donation": {
+      "id": "33753852-2e03-498a-bafd-256c8d410400",
+      "firstName": "G",
+      "lastName": "F",
       "createdAtUtc": 1684766860371,
       "amount": 3000,
       "thankYouComment": null,
