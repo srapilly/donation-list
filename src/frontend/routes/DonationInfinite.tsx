@@ -1,4 +1,4 @@
-import { useEffect, useState, WheelEventHandler } from "react";
+import { useEffect, useState } from "react";
 import { usePage } from "../hooks/usePage";
 import { donationListOutput, trpc } from "../utils/trpc";
 
@@ -22,9 +22,10 @@ export function DonationInfinite() {
   );
   const { data } = trpc.donationList.useQuery(cursor);
 
-  const handleScroll: WheelEventHandler = (e) => {
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const bottom =
-      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+      e.currentTarget.scrollHeight - e.currentTarget.scrollTop ===
+      e.currentTarget.clientHeight;
     if (bottom) {
       const nextCursor = data?.nextCursor;
 
