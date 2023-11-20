@@ -1,12 +1,10 @@
-import { router, publicProcedure } from "./trpc";
-import donations from "../frontend/assets/donations.json";
+import { router } from "./trpc";
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import cors from "cors";
+import { donationList } from "./procedure/donationList";
 
 const appRouter = router({
-  donationList: publicProcedure.query(() => {
-    return donations;
-  }),
+  donationList,
 });
 export type AppRouter = typeof appRouter;
 
