@@ -45,12 +45,12 @@ export function Donation() {
           })}
         </tbody>
       </table>
-      {data?.previousCursor >= 0 ? (
+      {data?.previousCursor !== undefined && (
         <Link to={"?cursor=" + data.previousCursor}>Previous</Link>
-      ) : null}
-      {data?.nextCursor ? (
+      )}
+      {data?.nextCursor !== undefined && (
         <Link to={"?cursor=" + data.nextCursor}>Next</Link>
-      ) : null}
+      )}
     </>
   );
 }
