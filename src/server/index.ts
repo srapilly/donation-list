@@ -1,5 +1,5 @@
 import { router, publicProcedure } from "./trpc";
-import donations from "../assets/donations.json";
+import donations from "../frontend/assets/donations.json";
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import cors from "cors";
 
