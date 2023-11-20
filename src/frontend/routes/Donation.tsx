@@ -1,5 +1,6 @@
 import { usePage } from "../hooks/usePage";
 import { trpc } from "../utils/trpc";
+import { Link, useSearchParams } from "react-router-dom";
 
 function timestampToFormattedDate(timestamp: number) {
   const date = new Date(timestamp);
@@ -15,7 +16,9 @@ function timestampToFormattedDate(timestamp: number) {
 
 export function Donation() {
   usePage("Donation");
-  const { data: donations } = trpc.donationList.useQuery();
+  const [searchParams] = useSearchParams();
+  const cursor = searchParams.get("cursor");
+  const { data } = trpc.donationList.useQuery(cursor ? parseInt(cursor) : 0);
 
   return (
     <>
@@ -29,7 +32,7 @@ export function Donation() {
           </tr>
         </thead>
         <tbody>
-          {donations?.map(({ id, donation }) => {
+          {data?.donations?.map(({ id, donation }) => {
             return (
               <tr key={id}>
                 <td>{timestampToFormattedDate(donation.createdAtUtc)}</td>
@@ -42,6 +45,12 @@ export function Donation() {
           })}
         </tbody>
       </table>
+      {data?.previousCursor >= 0 ? (
+        <Link to={"?cursor=" + data.previousCursor}>Previous</Link>
+      ) : null}
+      {data?.nextCursor ? (
+        <Link to={"?cursor=" + data.nextCursor}>Next</Link>
+      ) : null}
     </>
   );
 }
