@@ -1,9 +1,10 @@
 import { usePage } from "../hooks/usePage";
-import donations from "../assets/donations.json";
+import { trpc } from "../utils/trpc";
 
 function timestampToFormattedDate(timestamp: number) {
   const date = new Date(timestamp);
 
+  // Use user locale
   return new Intl.DateTimeFormat(undefined, {
     hour: "2-digit",
     minute: "2-digit",
@@ -14,6 +15,7 @@ function timestampToFormattedDate(timestamp: number) {
 
 export function Donation() {
   usePage("Donation");
+  const { data: donations } = trpc.donationList.useQuery();
 
   return (
     <>
@@ -27,7 +29,7 @@ export function Donation() {
           </tr>
         </thead>
         <tbody>
-          {donations.map(({ id, donation }) => {
+          {donations?.map(({ id, donation }) => {
             return (
               <tr key={id}>
                 <td>{timestampToFormattedDate(donation.createdAtUtc)}</td>
